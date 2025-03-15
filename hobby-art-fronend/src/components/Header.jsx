@@ -20,9 +20,7 @@ const Header = () => {
 
   return (
     <div className="relative h-screen ">
-      {/* Background split */}
-      <div className="absolute top-0 left-0 w-1/2 h-full  bg-[#dd3e1ac5]"></div>
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-[#7ecbd5]"></div>
+    
 
       {/* Desktop Menu */}
       <div className="hidden md:relative md:z-10 md:flex justify-around md:space-x-4 ">
@@ -40,20 +38,23 @@ const Header = () => {
         <p className="md:mt-14 font-semibold md:text-lg">Login</p>
       </div>
 
+      {/* show hamburger menu ico */}
       {!navbar && (
-        <div className="flex relative justify-around">
-          <img src={bgremoved} className="md:hidden w-32 -ml-8" />
+        <>
+          <div className="flex relative justify-around">
+            <img src={bgremoved} className="md:hidden w-32 -ml-8" />
 
-          <button className=" md:hidden" onClick={handlenav}>
-            <GiHamburgerMenu className="text-xl " />
-          </button>
-        </div>
+            <button className=" md:hidden" onClick={handlenav}>
+              <GiHamburgerMenu className="text-xl " />
+            </button>
+          </div>
+        </>
       )}
 
       {/*small screen */}
       {navbar && (
-        <div className="flex justify-between md:hidden relative bg-[#d45e44]  w-3/4 p-5 h-full ease-in-out">
-          <div>
+        <div className="fixed flex justify-between top-0 left-0  h-full md:hidden  bg-[#d45e44]  w-3/4 p-5  ease-in-out z-50">
+          <div className="">
             <img src={bgremoved} className="w-32 -mb-5" />
 
             {headerlist.map((item, index) => (
@@ -77,8 +78,9 @@ const Header = () => {
       )}
 
       <div className="relative ">
-        <img src={banner} className="rounded-lg p-52 -mt-72 "/>
+        <img src={banner} className="rounded-lg md:p-52 md:-mt-72 " />
       </div>
+     
     </div>
   );
 };
