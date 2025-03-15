@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import bgremoved from "../../public/images/logo2.png";
+import banner from "../../public/images/banner.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -41,7 +42,7 @@ const Header = () => {
 
       {!navbar && (
         <div className="flex relative justify-around">
-          <img src={bgremoved} className="w-32 -ml-8" />
+          <img src={bgremoved} className="md:hidden w-32 -ml-8" />
 
           <button className=" md:hidden" onClick={handlenav}>
             <GiHamburgerMenu className="text-xl " />
@@ -75,13 +76,10 @@ const Header = () => {
         </div>
       )}
 
-
-      <div className="relative text-center text-xl mt-10">
-        <h2 className="font-bold">Spark Imagination:</h2>
-        <h2>Perfect canvases for young Artists</h2>
+      <div className="relative ">
+        <img src={banner} className="rounded-lg p-52 -mt-72 "/>
       </div>
     </div>
-
   );
 };
 
