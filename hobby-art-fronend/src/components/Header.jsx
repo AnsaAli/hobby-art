@@ -19,9 +19,8 @@ const Header = () => {
   };
 
   return (
-    <div className="relative h-screen ">
+    <div className="relative  ">
     
-
       {/* Desktop Menu */}
       <div className="hidden md:relative md:z-10 md:flex justify-around md:space-x-4 ">
         <img src={bgremoved} className="md:w-56 md:-ml-14 md:-mt-10 " />
@@ -77,7 +76,7 @@ const Header = () => {
         </div>
       )}
 
-      <div className="relative ">
+      <div className="relative md:-mb-52 ">
         <img src={banner} className="rounded-lg md:p-52 md:-mt-72 " />
       </div>
      
