@@ -4,6 +4,7 @@ import banner from "../../public/images/banner.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { GiShoppingCart } from "react-icons/gi";
 
 const Header = () => {
   const [navbar, setNavbar] = useState(false);
@@ -27,14 +28,17 @@ const Header = () => {
 
         {headerlist.map((item, index) => (
           <Link
-            className=" md:mt-14 font-normal  md:text-lg"
+            className=" md:mt-14 font-bold  md:text-lg "
             key={index}
             to={item.path}
           >
             {item.name}
           </Link>
         ))}
-        <p className="md:mt-14 font-semibold md:text-lg">Login</p>
+       <div className="flex md:mt-14  gap-2">
+       <p className="font-bold md:text-lg">Cart</p>
+       <GiShoppingCart className="text-[#561111] text-2xl " />
+       </div>
       </div>
 
       {/* show hamburger menu ico */}
@@ -64,7 +68,7 @@ const Header = () => {
               </Link>
             ))}
             <p className="ml-7 mt-10 md:mt-14 font-semibold text-[#030e10]">
-              Login
+              Cart
             </p>
           </div>
 
