@@ -1,22 +1,13 @@
 import React, { useEffect, useState } from "react";
+import {Link} from 'react-router-dom';
+import {useFetchProducts} from '../customeHook/useFetchProducts';
 
 const Cards = () => {
-  const [items, setItems] = useState([]);
+  
+  const {items, loading} = useFetchProducts()
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetch(
-        "https://raw.githubusercontent.com/AnsaAli/art-data/refs/heads/main/artData.json"
-      );
-      const data = await result.json();
-
-      setItems(data);
-    };
-    fetchData();
-  }, []);
-
-  const ViewProducts=(index)=>{
-
+  if(loading){
+    return <p>Loading..</p>
   }
 
   return (
@@ -24,7 +15,7 @@ const Cards = () => {
       <h2 className="text-2xl md:text-4xl font-semibold md:mt-10 md:mb-5 mt-5 font-mono text-[#000000]  text-center relative">
         Artist's Favourite
       </h2>
-      <div className="relative p-10 flex flex-wrap gap-6  ">
+      <div className="relative p-10 flex flex-wrap gap-6 ">
         {items.map((item, index) => (
           <div
             key={item.id}
@@ -70,9 +61,12 @@ const Cards = () => {
               </div>
             </div>
             {/* view product  */}
-            <button className=" text-slate-100 bg-[#dd3e1aea] p-2 rounded-lg text-sm md:text-lg mt-auto" onClick={ViewProducts(index)}>
+            <Link className="mt-auto flex flex-col " to={`/view-product/${item.id}`}>
+            <button className=" text-slate-100 bg-[#dd3e1aea] p-2 rounded-lg text-sm md:text-lg " >
               View Product
             </button>
+            </Link>
+           
           </div>
         ))}
       </div>
