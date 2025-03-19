@@ -27,16 +27,19 @@ const ViewProducts = () => {
     return <p>Product not found.</p>;
   }
   return (
-    <div className=" relative p-10  ">
-      <div className="bg-[#0000006a] md:p-20 rounded-lg">
-        <div className="md:flex md:justify-start">
+    <div className=" relative p-10">
+      <div className="md:p-20 rounded-lg ">
+        <div className="md:grid md:grid-cols-3 md:p-5">
           {/* main image */}
-          <div className="bg-white rounded-t-3xl rounded-b-sm">
-            <img src={mainImage} className="w-full h-80 rounded-t-3xl md:w-96" />
+          <div className="bg-white rounded-t-3xl rounded-b-sm ">
+            <img
+              src={mainImage}
+              className="w-full h-72 rounded-t-3xl md:w-96"
+            />
           </div>
 
           {/* side bar image */}
-          <div className="flex gap-2 p-5 md:flex-col ">
+          <div className="flex gap-2 p-5 md:grid ">
             {product.img.map((img, index) => (
               <div key={index}>
                 <img
@@ -49,8 +52,8 @@ const ViewProducts = () => {
           </div>
 
           {/* prodct details  */}
-          <div className="md:mx-96 md:mt-10">
-            <h3 className=" text-black font-bold  text-xl md:text-2xl">
+          <div className="md:mt-5 ">
+            <h3 className=" text-black font-bold  text-xl md:text-3xl">
               {" "}
               {product.name}
             </h3>
@@ -84,14 +87,13 @@ const ViewProducts = () => {
                 )
               )}
             </div>
-            <p className="font-semibold md:text-xl"> {product.details}</p>
-          </div>
-        </div>
-
-        <div className="text-center">
-          <button className="bg-green-600 p-2 text-white rounded-md mt-4 md:text-xl md:px-5 md:mt-5">
+            <p className="font-semibold md:text-xl md:w-32"> {product.details}</p>
+            <div className="text-center md:text-start">
+          <button className="bg-green-600 p-2 text-white rounded-md mt-4 md:text-xl md:px-5">
             Add To Cart
           </button>
+        </div>
+          </div>
         </div>
       </div>
     </div>
