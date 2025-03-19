@@ -3,7 +3,7 @@ import Body from "./components/Body.jsx";
 import ViewProducts from "./components/ViewProducts.jsx";
 import {Provider} from 'react-redux';
 import productStore from "./components/redux/store.js";
-
+import Header from './components/Header.jsx'
 
 export default function App() {
   return (
@@ -12,7 +12,9 @@ export default function App() {
         {/* Background split applied globally */}
         <div className="absolute top-0 left-0 w-1/2 h-full bg-[#dd3e1ac5]"></div>
         <div className="absolute top-0 right-0 w-1/2 h-full bg-[#7ecbd5]"></div>
+      
         <BrowserRouter>
+        <Header/>
           <Routes>
             <Route path="/" element={<Body />} />
             <Route path="/view-product/:id" element={<ViewProducts />} />

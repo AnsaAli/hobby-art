@@ -6,7 +6,8 @@ import Cards from './cards/Cards'
 const Body = () => {
   return (
     <div >  
-    <Header/>
+
+    <Home/>
     <Cards/>
     </div>
   )

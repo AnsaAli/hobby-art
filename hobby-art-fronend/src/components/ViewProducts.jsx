@@ -28,8 +28,8 @@ const ViewProducts = () => {
   }
   return (
     <div className=" relative p-10">
-      <div className="md:p-20 rounded-lg ">
-        <div className="md:grid md:grid-cols-3 md:p-5">
+      <div className="md:p-20 rounded-lg bg-[#ffffff79]">
+        <div className="md:grid md:grid-cols-3 md:p-5 ">
           {/* main image */}
           <div className="bg-white rounded-t-3xl rounded-b-sm ">
             <img

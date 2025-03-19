@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import bgremoved from "../../public/images/logo2.png";
-import banner from "../../public/images/banner.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -79,11 +78,6 @@ const Header = () => {
           </div>
         </div>
       )}
-
-      <div className="relative md:-mb-52 ">
-        <img src={banner} className="rounded-lg md:p-52 md:-mt-72 " />
-      </div>
-     
     </div>
   );
 };
