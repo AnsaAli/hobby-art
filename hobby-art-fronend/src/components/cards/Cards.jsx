@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from "react";
-import {Link} from 'react-router-dom';
-import {useFetchProducts} from '../customeHook/useFetchProducts';
+import { Link } from "react-router-dom";
+import { useFetchProducts } from "../customeHook/useFetchProducts";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../redux/productSlice";
 
 const Cards = () => {
-  
-  const {items, loading} = useFetchProducts()
+  const { items, loading, error } = useSelector((state) => state.products);
+  const dispath = useDispatch();
 
-  if(loading){
-    return <p>Loading..</p>
+  useEffect(() => {
+    if (loading === "idle") {
+      dispath(fetchProducts());
+    }
+  }, [dispath, loading]);
+
+  if (loading === "pending") {
+    return <p>Loading...</p>;
+  }
+  if (loading === "failed") {
+    return <p>Error: {error}</p>;
   }
 
   return (
@@ -34,8 +45,10 @@ const Cards = () => {
             <p className="text-slate-300 text-sm mt-auto  md:text-lg ">
               {item.details.split(" ").slice(0, 10).join(" ")}....
             </p>
+
             <div className="flex justify-between mt-auto">
               <p className="text-slate-100">RS.{item.price}</p>
+
               {/* ⭐ Star Rating Section */}
               <div className="text-yellow-500 mt-2 flex">
                 {/* Full Stars */}
@@ -45,28 +58,31 @@ const Cards = () => {
                   )
                 )}
 
-                {/* Half Star (only if the rating is something like 4.5, 3.5) */}
+                {/* Half Star */}
                 {item.star_rating % 1 >= 0.3 && item.star_rating % 1 <= 0.7 && (
                   <span>⭐</span>
                 )}
 
-                {/* Empty Stars (to maintain a 5-star layout) */}
+                {/* Empty Stars */}
                 {Array.from({ length: 5 - Math.round(item.star_rating) }).map(
                   (_, index) => (
                     <span key={index} className="text-gray-300">
                       ★
-                    </span> // Empty stars
+                    </span>
                   )
                 )}
               </div>
+              
             </div>
             {/* view product  */}
-            <Link className="mt-auto flex flex-col " to={`/view-product/${item.id}`}>
-            <button className=" text-slate-100 bg-[#dd3e1aea] p-2 rounded-lg text-sm md:text-lg " >
-              View Product
-            </button>
+            <Link
+              className="mt-auto flex flex-col "
+              to={`/view-product/${item.id}`}
+            >
+              <button className=" text-slate-100 bg-[#dd3e1aea] p-2 rounded-lg text-sm md:text-lg ">
+                View Product
+              </button>
             </Link>
-           
           </div>
         ))}
       </div>
