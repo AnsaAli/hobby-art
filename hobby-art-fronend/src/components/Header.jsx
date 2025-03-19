@@ -9,9 +9,9 @@ const Header = () => {
   const [navbar, setNavbar] = useState(false);
 
   const headerlist = [
-    { name: "Acrylic Colours", path: "/acrylic" },
-    { name: "Oil Colours", path: "/oil" },
-    { name: "DIY Bases", path: "/diy" },
+    { name: "Home", path: "/" },
+    { name: "About Us", path: "/oil" },
+    { name: "Contact", path: "/diy" },
   ];
 
   const handlenav = () => {
@@ -20,14 +20,13 @@ const Header = () => {
 
   return (
     <div className="relative  ">
-    
       {/* Desktop Menu */}
       <div className="hidden md:relative md:z-10 md:flex justify-around md:space-x-4 ">
         <img src={bgremoved} className="md:w-56 md:-ml-14 md:-mt-10 " />
 
         {headerlist.map((item, index) => (
           <Link
-            className=" md:mt-14 font-bold  md:text-lg "
+            className=" md:mt-14 font-bold  md:text-xl "
             key={index}
             to={item.path}
           >
@@ -35,7 +34,7 @@ const Header = () => {
           </Link>
         ))}
        <div className="flex md:mt-14  gap-2">
-       <p className="font-bold md:text-lg">Cart</p>
+       <p className="font-bold md:text-xl">Cart</p>
        <GiShoppingCart className="text-[#561111] text-2xl " />
        </div>
       </div>
