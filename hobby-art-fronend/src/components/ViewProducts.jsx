@@ -31,7 +31,7 @@ const ViewProducts = () => {
       <div className="md:p-20 rounded-lg bg-[#ffffff46]">
         <div className="md:grid md:grid-cols-3 md:p-5 ">
           {/* main image */}
-          <div className="bg-white rounded-t-3xl rounded-b-sm ">
+          <div className="bg-white rounded-t-full rounded-b-sm mx-auto">
             <img
               src={mainImage}
               className="w-full h-72 rounded-t-3xl md:w-96"
@@ -52,7 +52,7 @@ const ViewProducts = () => {
           </div>
 
           {/* prodct details  */}
-          <div className="md:mt-5 ">
+          <div className="md:mt-5 p-5 ">
             <h3 className=" text-black font-bold  text-xl md:text-3xl">
               {" "}
               {product.name}
