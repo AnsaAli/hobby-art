@@ -6,6 +6,7 @@ import store from "./components/redux/store.js";
 import Header from "./components/Header.jsx";
 import { Toaster } from "react-hot-toast";
 import CartList from "./components/CartList.jsx";
+import Footer from "./components/Footer.jsx";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
             <Route path="/view-product/:id" element={<ViewProducts />} />
             <Route path="/cart" element={<CartList />} />
           </Routes>
+          <Footer/>
         </BrowserRouter>
       </div>
     </Provider>
