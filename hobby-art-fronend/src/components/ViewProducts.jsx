@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useFetchProducts } from "./customeHook/useFetchProducts";
-import { useSelector } from "react-redux";
-import { TfiArrowCircleLeft } from "react-icons/tfi";
-import { TfiArrowCircleRight } from "react-icons/tfi";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "./redux/cartSlice";
+
 
 const ViewProducts = () => {
   const { id } = useParams();
@@ -14,6 +13,10 @@ const ViewProducts = () => {
 
   //setting the image
   const [mainImage, setMainImage] = useState(product.img[0]);
+  const dispath= useDispatch();
+
+  const cartItem = useSelector((state)=>state.cart)
+
 
   if (loading === "pending") {
     return <p>Loading...</p>;
@@ -25,6 +28,11 @@ const ViewProducts = () => {
 
   if (!product) {
     return <p>Product not found.</p>;
+  }
+
+  const handleAddToCart = ()=>{
+        dispath(addToCart(product))
+
   }
   return (
     <div className=" relative p-10">
@@ -89,7 +97,7 @@ const ViewProducts = () => {
             </div>
             <p className="font-semibold md:text-xl md:w-32"> {product.details}</p>
             <div className="text-center md:text-start">
-          <button className="bg-green-600 p-2 text-white rounded-md mt-4 md:text-xl md:px-5">
+          <button className="bg-green-600 p-2 text-white rounded-md mt-4 md:text-xl md:px-5" onClick={handleAddToCart}>
             Add To Cart
           </button>
         </div>

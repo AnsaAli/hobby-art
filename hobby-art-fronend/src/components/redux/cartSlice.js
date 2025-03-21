@@ -11,7 +11,12 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const item = action.payload;
-      state.cart.push(item);
+      const existingItem = state.cart.find((cartItem) => cartItem.id === item.id);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        state.cart.push({ ...item, quantity: 1 });
+      }
       state.totalItems++;
       state.totalPrice += item.price;
       toast.success(`${item.name} added to the cart`);

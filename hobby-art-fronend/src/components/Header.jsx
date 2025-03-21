@@ -4,9 +4,12 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { GiShoppingCart } from "react-icons/gi";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [navbar, setNavbar] = useState(false);
+
+  const totalItems = useSelector((state) => state.cart.totalItems);
 
   const headerlist = [
     { name: "Home", path: "/" },
@@ -33,10 +36,11 @@ const Header = () => {
             {item.name}
           </Link>
         ))}
-       <div className="flex md:mt-14  gap-2">
-       <p className="font-bold md:text-xl">Cart</p>
-       <GiShoppingCart className="text-[#561111] text-2xl " />
-       </div>
+        <div className="flex md:mt-14  gap-2">
+          <p className="font-bold md:text-xl">Cart</p>
+          <GiShoppingCart className="text-[#561111] text-2xl " /> 
+          {totalItems}
+        </div>
       </div>
 
       {/* show hamburger menu ico */}
