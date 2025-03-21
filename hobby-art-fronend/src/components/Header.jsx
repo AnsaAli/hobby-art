@@ -13,8 +13,8 @@ const Header = () => {
 
   const headerlist = [
     { name: "Home", path: "/" },
-    { name: "About Us", path: "/oil" },
-    { name: "Contact", path: "/diy" },
+    { name: "About Us", path: "/about-us" },
+    { name: "Contact", path: "/contact" },
   ];
 
   const handlenav = () => {
@@ -36,11 +36,15 @@ const Header = () => {
             {item.name}
           </Link>
         ))}
-        <div className="flex md:mt-14  gap-2">
-          <p className="font-bold md:text-xl">Cart</p>
-          <GiShoppingCart className="text-[#561111] text-2xl " /> 
-          {totalItems}
-        </div>
+
+        <Link className="mt-14" to={"/cart"}>
+          {totalItems >= 0 && (
+            <p className="font-bold md:text-xl inline-flex">
+              <GiShoppingCart className="text-2xl" />
+              Cart {totalItems}
+            </p>
+          )}
+        </Link>
       </div>
 
       {/* show hamburger menu ico */}
@@ -60,21 +64,30 @@ const Header = () => {
       {navbar && (
         <div className="fixed flex justify-between top-0 left-0  h-full md:hidden  bg-[#d45e44]  w-3/4 p-5  ease-in-out z-50">
           <div className="">
-            <img src={bgremoved} className="w-32 -mb-5" />
+            <img src={bgremoved} className="w-40 -mb-5" />
 
             {headerlist.map((item, index) => (
-              <Link key={index} to={item.path}>
-                <p className="ml-7 mb-4 font-normal text-sm text-[#030e10]">
+              <Link key={index} to={item.path} onClick={() => setNavbar(false)}>
+                <p className="ml-7 mb-4  font-semibold text-[#030e10]">
                   {item.name}
                 </p>
               </Link>
             ))}
-            <p className="ml-7 mt-10 md:mt-14 font-semibold text-[#030e10]">
-              Cart
-            </p>
+            <Link
+              className="mt-14"
+              to={"/cart"}
+              onClick={() => setNavbar(false)}
+            >
+              {totalItems >= 0 && (
+                <p className="inline-flex ml-7 mt-10  font-semibold text-[#030e10]">
+                  <GiShoppingCart className="text-2xl" />
+                  Cart {totalItems}
+                </p>
+              )}
+            </Link>
           </div>
 
-          <div className="mt-12 mr-2">
+          <div className="mt-16 mr-2">
             <button className=" md:hidden" onClick={handlenav}>
               {navbar && <IoClose className="text-2xl " />}
             </button>
